@@ -36,47 +36,7 @@ const calculateAverage = () => {
     return windowNumbers.reduce((sum, num) => sum + num, 0) / windowNumbers.length;
 };
 
-// Middleware to handle incoming requests
-// const handleNumbers = async (req, res) => {
-//     const { numberid } = req.query;
 
-//     if (!testServerPaths[numberid]) {
-//         return res.status(400).json({ error: "Invalid numberid provided" });
-//     }
-
-//     try {
-//         const startTime = Date.now();
-//         console.log(startTime);
-//         const numbers = await fetchNumbers(numberid);
-//         console.log(numbers);
-//         const endTime = Date.now();
-
-//         // Check if response is received within 500 ms
-//         if ((endTime - startTime) > 500) {
-//             return res.status(500).json({ error: "Timeout exceeded while fetching numbers from test server" });
-//         }
-
-//         // Update window numbers
-//         windowNumbers.push(...numbers);
-//         windowNumbers = Array.from(new Set(windowNumbers)); // Remove duplicates
-//         if (windowNumbers.length > windowSize) {
-//             windowNumbers = windowNumbers.slice(-windowSize); // Trim to window size
-//         }
-
-//         // Prepare response
-//         const response = {
-//             numbers,
-//             windowPrevState: [],
-//             windowCurrState: windowNumbers,
-//             avg: calculateAverage()
-//         };
-
-//         res.json(response);
-//     } catch (error) {
-//         console.error("Error handling numbers:", error);
-//         res.status(500).json({ error: "Failed to fetch numbers from test server" });
-//     }
-// };
 const handleNumbers = async (req, res) => {
     const { numberid } = req.query;
 
